@@ -1,6 +1,6 @@
-                    @1                   
-                    @1  ~fM ~bE G ~3A Z ~bE U ~fX  
-                    @1                   
+                    @1
+                    @1  ~fM ~bE G ~3A Z ~bE U ~fX
+                    @1
 
 :072:                     ~9Table of Contents
 
@@ -60,7 +60,7 @@ $Akwende, MenTaLguY, CapnKev.
 
 >072:Table of Contents
 #HELPONHE.HLP
-:000: 
+:000:
 $~9Help on Help
 
 Using MegaZeux's help system is very simple. Press F1 at
@@ -84,7 +84,7 @@ Help Topics) Press ESC to exit the help system.
 
 >#MAIN.HLP:072:Table of Contents
 #1ST_TIME.HLP
-:071: 
+:071:
 $~9Overview of MegaZeux
 
 $Welcome to MegaZeux! Use the arrow keys to scroll
@@ -133,7 +133,7 @@ the game.
 
 >#NEWINVER.HLP:1st:NEW in MegaZeux!
 #ZZT.HLP
-:zzt: 
+:zzt:
 $~9A ZZTer's Guide to MegaZeux
 
 ZZT and MegaZeux are worlds apart, although one can convert
@@ -167,7 +167,7 @@ MegaZeux.
 -MZX Sharks do not swim in water, and can be shot. They can
 also shoot any type of projectile.
 -MZX Scrolls cannot execute code. Use a Robot ending with the
-"die" command for ZZT scrolls with code instead. 
+"die" command for ZZT scrolls with code instead.
 -Terrains that give out a distinctive message on first touch
 (fakes, forests) give out no such message in MZX.
 -There are two types of Gems; the one that best emulates ZZT
@@ -179,7 +179,7 @@ using the message row for the line).
 -ZZT has one less bullet type than MZX; shift MZX types one
 tier of "friendliness" for each typical shooter to get
 ZZT-equivalent bullets.
--Putting in fake commands for comedic effect (e.g. putting in 
+-Putting in fake commands for comedic effect (e.g. putting in
 ~A#GOSUCKANEGG~F to make ZZT beep and go "ERR: Bad command
 GOSUCKANEGG") does not work in MegaZeux and has to be emulated.
 -Special exploits (e.g. black holes, monitors, speed-up
@@ -251,16 +251,16 @@ for this in MZX.
 
 ~A#IF flag label;text = ? "counter" "label" "text"
 
-~A#IF flag THEN command = IF "counter" = 1 THEN "label" 
+~A#IF flag THEN command = IF "counter" = 1 THEN "label"
 ~F[*]
 
 ~A#IF ANY object THEN command = IF ANY color thing param "label"
 ~F[*]
 
-~A#IF NOT flag THEN command = IF "counter" = 0 THEN "label" 
+~A#IF NOT flag THEN command = IF "counter" = 0 THEN "label"
 ~F[*]
 
-~A#IF condition THEN command = IF condition THEN "label" 
+~A#IF condition THEN command = IF condition THEN "label"
 ~F[*]
 
 ~A#IF NOT condition THEN command = IF NOT condition THEN "label"
@@ -272,7 +272,7 @@ for this in MZX.
 
 ~A#PUT direction thing = PUT color thing param direction
 
-~A#RESTART 
+~A#RESTART
 ~F[#]
 
 ~A#RESTORE label = RESTORE "label" #
@@ -281,7 +281,7 @@ for this in MZX.
 
 ~A#SEND Objectname:"label" = SEND "Robotname" "label"
 
-~A#SEND ALL:command  = SEND "All" "label" 
+~A#SEND ALL:command  = SEND "All" "label"
 ~F[*]
 
 ~A#SET flag = SET "counter" 1
@@ -321,7 +321,7 @@ help for details.
 
 >#MAIN.HLP:072:Table of Contents
 #DIABOX.HLP
-:098: 
+:098:
 $~9Dialog Boxes
 
 Much of MegaZeux's interface is made of dialog boxes. They
@@ -399,7 +399,7 @@ choice.
 
 >#MAIN.HLP:072:Table of Contents
 #CONTROLS.HLP
-:ctr: 
+:ctr:
 $~9Controls
 
 Universal controls are as follows:
@@ -615,7 +615,7 @@ F10 - Quickload (see above)
 
 >#MAIN.HLP:072:Table of Contents
 #NONDESCR.HLP
-:091: 
+:091:
 $~9Nondescript Play Tips
 
 Some basic play tips:
@@ -683,7 +683,7 @@ better. Don't let a few dull games ruin the fun.
 
 >#MAIN.HLP:072:Table of Contents
 #MOUSESUP.HLP
-:1st: 
+:1st:
 $~9Mouse Support in MegaZeux
 
 Use of the mouse is very simple. Move the mouse to move the
@@ -696,7 +696,7 @@ and the list menu.
 
 >#MAIN.HLP:072:Table of Contents
 #BUILTINS.HLP
-:1st: 
+:1st:
 $~9The Mirth of Built-ins
 
 The following help section contains a list of the different
@@ -1260,7 +1260,7 @@ the appropriate help sections for more information.
 >#ROBOTSWH.HLP:1st:Robots - What They Are and How to Use Them
 >#MAIN.HLP:072:Table of Contents
 #CONFGINI.HLP
-:1st: 
+:1st:
 $~9MegaZeux Options
 
 Now you should be familiar with MegaZeux enough to where you
@@ -1271,12 +1271,12 @@ from any option you want set!
 
 Editing the options can result in better sound, better / more
 customizable graphics, more fitting defaults, a more
-personalized Robotic editor, joystick support, extended macros, 
+personalized Robotic editor, joystick support, extended macros,
 automated backup and much more.
 
 >#MAIN.HLP:072:Table of Contents
 #IFYOUFIN.HLP
-:1st: 
+:1st:
 $~9If You Find a Bug...
 
 ...we want to know! We're very interested in any problems or
@@ -1297,7 +1297,7 @@ To make things sane for all parties, do this before submitting:
   3) Try to write down what specifically happens.
   4) List what platform(s) you know show this problem.
   5) Try to pinpoint the problem to a specific Robotic line or
-     MZX function; at the very least, try to narrow it down. 
+     MZX function; at the very least, try to narrow it down.
      Pinpointing which version introduced the bug is very
      helpful, if possible.
   6) If it is a crash, try to run a debug build through GDB and
@@ -1312,7 +1312,7 @@ To make things sane for all parties, do this before submitting:
 
 >#MAIN.HLP:072:Table of Contents
 #FAQ.HLP
-:1st: 
+:1st:
 $~9Frequently Asked Questions
 
 The following is a list of questions that have been received
@@ -1330,24 +1330,24 @@ Q: How can I get option (foobar) in the config file to work?
 A: Make sure the pound / hash sign in front of the command is
   deleted. Otherwise, the option is treated as a comment and
   ignored.
-  
+
 Q: Are there any MZX-specific tools that can make developing an
   MZX game easier?
 
-A: Yes, plenty! MegaZeux comes with two helpful tools: 
+A: Yes, plenty! MegaZeux comes with two helpful tools:
   "Checkres" will detect what files referenced by an MZX world
   are present, and "downver" can change the given MZX world's
   version to its preceding version. There are several graphical
   conversion programs such as CharCon, and SMZX palette tools
-  such as Palzor and PalMaster.  
+  such as Palzor and PalMaster.
   MZX has natural time-savers, of course. Automated backups,
   macros, Robotic code import/export, expressions, repeated
   block copying and other features can help speed up
   development time.
-  
+
 Q: This MZX game has some neat things in it! Can I use some of
   these things in my own game?
-  
+
 A: It's usually okay to do this, as long as you give definite
   credit to the original creator(s). Unless MZXers made it,
   music and sound generally don't need direct attribution, but
@@ -1404,7 +1404,7 @@ A: Before you go bugging the maintainer(s) of MegaZeux to add
      currently the method of storing Robotic severely limits
      the amount of new commands. Until this system is retooled,
      there will be no new commands.
-     
+
 Q: Is adding network capabilities to MegaZeux planned?
 
 A: Short answer: Not really. This has been discussed at-length;
@@ -1440,14 +1440,14 @@ A: Then you'll need to carefully utilize the Robot command
   shown when other characters are and replace them with
   characters you WILL use (such as the alphanumeric
   characters).
-  
+
 >#PARTIAL.HLP:par:Partial Character Sets
-  
+
 Q: Why is my MegaZeux world starting on the title screen?
 
 A: The first board has to be set. Press 'G' in the editor, then
   set the board using the "First board" field at the top left.
-  
+
 Q: Whenever I place a string on the overlay, the spaces aren't
   acting like overlay at all! Is this a bug?
 
@@ -1462,7 +1462,7 @@ Q: How can I input a number over 32767 or under -32768 in
 A: You must use an expression. Encase the number in
   parentheses, as shown here:
   ~Eset "largesse" to "(2000000000)"
-  
+
 Q: My Robot can't change its/the player's characters! I
   use CHAR "A" but it turns invisible! What am I doing wrong?
 
@@ -1538,7 +1538,7 @@ A: You're likely using an idle loop without a CYCLE 1 or WAIT 1
   command inserted. Add one; if you're wary about possible
   delay effects, rest assured that adding either of these will
   not unnecessarily add delays. It will simply end a cycle.
-  
+
 Q: I heard only certain graphics cards can properly show Super
   MZX mode games. Is this true?
 
@@ -1556,7 +1556,7 @@ Q: What's with these "~~roboclp.tmp" files packed with so many
 
 A: Those held clipboard information in DOS versions of MegaZeux.
   They are useless and should be freely deleted.
-  
+
 Q: Why doesn't [ work for taking screenshots?
 
 A: It has been changed to F12 and now works in any area in MZX,
@@ -1566,7 +1566,7 @@ A: It has been changed to F12 and now works in any area in MZX,
 
 >#MAIN.HLP:072:Table of Contents
 #MEGAZEUX.HLP
-:1st: 
+:1st:
 $~9MegaZeux Limitations
 
 MegaZeux has to impose a number of limitations to insure
@@ -1589,7 +1589,7 @@ Local Counters      32 per Robot plus specialized local counters
                     (loopcount, lava_walk, bullettype)
 
 $Length Limitations
-                
+
 Robot Name Length   14 characters
 String Length       4,194,304 characters (4 megabytes)
 Editor Line Length  241 characters (INCLUDING "extra" words)
@@ -1627,7 +1627,7 @@ status of the board's overlay.
 >#EXPRESS.HLP:exp:Expressions
 >#MAIN.HLP:072:Table of Contents
 #THEWORLD.HLP
-:1st: 
+:1st:
 $~9The World Editor
 
 Ready to start creating your own worlds? Then, let's get
@@ -1701,7 +1701,7 @@ however.
 >#GENERALE.HLP:1st:General Editing Tips
 >#MAIN.HLP:072:Table of Contents
 #GENERALE.HLP
-:1st: 
+:1st:
 $~9General Editing Tips
 
 The following is a list of important editing tips. They assume
@@ -1777,7 +1777,7 @@ like insert; it grabs the current thing over the mouse cursor.
 >#EDITINGK.HLP:080:Editing Keys and Options Reference
 >#MAIN.HLP:072:Table of Contents
 #EDITINGK.HLP
-:080: 
+:080:
 $~9Editing Keys and Options Reference
 
 The following is an alphabetical listing of keys within the
@@ -1983,7 +1983,7 @@ Ctrl+G will pop up a window, displaying target {x,y}
 coordinates. Set the coordinates by either typing in or
 selecting the desired X and Y values, and select OK to go to
 those coordinates on the current board. Choosing Cancel or
-pressing Escape cancels. 
+pressing Escape cancels.
 
 :_G:~EG - Global Info
 
@@ -2055,7 +2055,7 @@ off.
 Ctrl+N does the same as Alt+N, except it only plays the
 selected module. It does not set the board module to the
 selected module. It also remembers the last-used directory to
-maintain a current listening directory. If a GDM is tested, 
+maintain a current listening directory. If a GDM is tested,
 it will be auto-converted to an S3M (unless MZX is built with
 MikMod). A tested module will continue to play even if the
 current board is set to play music, and even if the current
@@ -2063,7 +2063,7 @@ world file is changed.
 
 :AltO:~EAlt+O - Edit Overlay
 
-Alt+O enters overlay editing mode. The overlay is on normal  
+Alt+O enters overlay editing mode. The overlay is on normal
 overlay mode by default. The overlay editing mode is similar to
 the normal editing mode, except that only certain keys are
 active, and the Enter and Alt+S keys have new purposes. The
@@ -2340,7 +2340,7 @@ dialog boxes.
 >#GENERALE.HLP:1st:General Editing Tips
 >#MAIN.HLP:072:Table of Contents
 #CHAREDIT.HLP
-:079: 
+:079:
 $~9The Character Editor
 
 The character editor is an important part of MegaZeux. With
@@ -2431,7 +2431,7 @@ to the Super MZX Modes section for more information on this.
 >#EDITINGK.HLP:080:Editing Keys and Options Reference
 >#MAIN.HLP:072:Table of Contents
 #PALEEDIT.HLP
-:093: 
+:093:
 $~9The Palette Editor
 
 The built-in palette editor can certainly spruce up a game. It
@@ -2478,7 +2478,7 @@ SMZX modes.
 >#SMZXMODE.HLP:095:Super MZX Modes
 >#MAIN.HLP:072:Table of Contents
 #GLOBALIN.HLP
-:086: 
+:086:
 $~9Global Info Options
 
 To edit the Global Info options, press G within the editor.
@@ -2723,7 +2723,7 @@ saved in order to do this.
 >#EDITINGK.HLP:080:Editing Keys and Options Reference
 >#MAIN.HLP:072:Table of Contents
 #SOUNDEFX.HLP
-:1st: 
+:1st:
 $~9MegaZeux's Sound System
 
 MegaZeux has two types of sound: Digitized sound, played
@@ -2773,7 +2773,7 @@ play the WAV and OGG formats. GDMs load natively in MikMod, in
 contrast to ModPlug.
 
 Formats common to both engines are MOD, S3M, XM, IT, STM, MTM,
-669, ULT, FAR, MED, DSM, OKT and AMF. All other formats 
+669, ULT, FAR, MED, DSM, OKT and AMF. All other formats
 (excluding WAV/OGG/SAM/GDM) are locked out of MZX by default.
 
 MZX supports loop markers for WAVE and OGG files. WAVE formats
@@ -3072,7 +3072,7 @@ section of help.
 >#CONFGINI.HLP:1st:External MegaZeux Options
 >#MAIN.HLP:072:Table of Contents
 #TOVERLAY.HLP
-:081: 
+:081:
 $~9Editing and Using the Overlay
 
 The overlay is a simple but useful part of a board. If one
@@ -3122,7 +3122,7 @@ down. Mirror will flip the block left to right. Paint will
 change the entire block to the current color. Copy to/from
 overlay will copy the block to the main level from the overlay.
 You will have to select the type of thing it will be copied as:
-Floor, Text, etc. Save as MZM will save the block as a 
+Floor, Text, etc. Save as MZM will save the block as a
 layer-type MZM file. Destinations for Move and Copy can
 overlap the original block safely. Ctrl+Dir is especially
 helpful when doing a repeated copy block; it moves the cursor
@@ -3266,7 +3266,7 @@ overlays.
 
 >#MAIN.HLP:072:Table of Contents
 #SCROLLSS.HLP
-:1st: 
+:1st:
 $~9Signs and Scrolls in the Editor
 
 Signs and Scrolls are a simple way to get messages across in
@@ -3399,7 +3399,7 @@ confirmation.
 
 >#MAIN.HLP:072:Table of Contents
 #ERRORMES.HLP
-:1st: 
+:1st:
 $~9Error Messages
 
 The following is a list of error messages in alphabetical
@@ -3701,7 +3701,7 @@ contact the developer(s) if you see this error.
 
 >#MAIN.HLP:072:Table of Contents
 #SENSORSW.HLP
-:094: 
+:094:
 $~9Sensors - What They Are and How to Use Them
 
 Sensors have two real purposes. The first is to act as save
@@ -3724,7 +3724,7 @@ can SEND a message to a Sensor, but the Sensor will only SEND
 messages to the Robot stated in its settings. If you entered a
 Robot of ALL, then it will SEND messages to all Robots. Unlike
 Robots, Sensors cannot send to a dynamic name; for instance, it
-cannot be set to send to "&fest&ive" (whereas a Robot would 
+cannot be set to send to "&fest&ive" (whereas a Robot would
 properly send to "1ive" when "fest" is 1 and to "5ive" when
 "fest" is 5).
 
@@ -3791,7 +3791,7 @@ the Sensor.
 
 >#MAIN.HLP:072:Table of Contents
 #ROBOTICR.HLP
-:087: 
+:087:
 $~9Robotic Reference Manual
 
 Use the following help links to see your desired topic(s).
@@ -3826,7 +3826,7 @@ Use the following help links to see your desired topic(s).
 >#BADPRACT.HLP:101:Robotic Usages That Should be Avoided
 >#MAIN.HLP:072:Table of Contents
 #COMMANDS.HLP
-:1st: 
+:1st:
 $~9Command Syntax
 
 Commands in Robotic must conform to a certain syntax:
@@ -4227,7 +4227,7 @@ followed by one of these characters:
     5 Purple (color 5)       D Lt. Purple (color 13)
     6 Brown (color 6)        E Yellow (color 14)
     7 Lt. Gray (color 7)     F White (color 15)
-    
+
 
 To show a ~~, use a ~~~~. To show a @@, use @@@@.
 
@@ -4247,7 +4247,7 @@ $Robotic Usage of Strings
 In Robotic, strings can be incredibly powerful. They can act
 like counters, but hold text information as well as numbers
 (however, counters are by far better-suited for number use).
-A Robotic string is any counter prefixed by a $ sign (e.g. 
+A Robotic string is any counter prefixed by a $ sign (e.g.
 "$string").
 
 Certain characters must be inputted in specific ways to avoid
@@ -4346,7 +4346,7 @@ Will cause $str to have the value "Long steps."
 (starting from 0). When used for output, it will give the
 character value of the given character in a string. Any invalid
 numbers (past the terminator) are given a value of 0. This
-command works well with char immediates: 
+command works well with char immediates:
 E.G. SET "$string.0" 'S' . When setting the character in a
 string it will make the string length one larger than X, so be
 careful when using very large values.
@@ -4387,7 +4387,7 @@ this method of scanning strings instead of BOARD_SCAN.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #COMMANDR.HLP
-:1st: 
+:1st:
 $~9Command Reference
 
 The following table is a list of all Robotic commands in
@@ -4680,7 +4680,7 @@ will wait until it can before moving on to the next symbol.
 Use GO to move in a single direction for a given number of
 spaces (limited to 255; higher numbers and negatives wrap).
 
-These commands can be used concurrently with ~AWALK [dir]~F, 
+These commands can be used concurrently with ~AWALK [dir]~F,
 allowing Robots to move in double-speed steps. However, this
 can only happen when the commands are in the same cycle and if
 the given string/number for the moving command is small.
@@ -4918,7 +4918,7 @@ given label.
 :_b1:~ABECOME [color] [thing] [param]
 
 The Robot will end its program permanently, and instead become
-a specified object with a given color and parameter. 
+a specified object with a given color and parameter.
 NOTE: Becoming another Robot type will not destroy the program,
 but there are far better commands for doing this: ~ABECOME~F
 ~APUSHABLE~F and ~ABECOME NONPUSHABLE~F.
@@ -4956,7 +4956,7 @@ use ~ADUPLICATE SELF # #~F or ~ADUPLICATE SELF [dir]~F.
 
 This command loads the given module/OGG/WAV/SAM file as
 background music. These files also can be loaded from a
-subdirectory with the syntax of ""dir"\"file"" or 
+subdirectory with the syntax of ""dir"\"file"" or
 ""dir"/"file"" (without the inner quotes). The biggest
 difference between MOD and SAM commands is that for a file
 loaded with MOD one can use related commands like VOLUME and
@@ -5174,7 +5174,7 @@ for this purpose because even the Robot name is copied.
 :_d9:~ADUPLICATE SELF # #
 :_d0:~ADUPLICATE SELF [dir]
 
-The current Robot creates an exact duplicate of itself 
+The current Robot creates an exact duplicate of itself
 (including local counter values!) and places it at the noted
 {x,y} coordinates or relative direction. That Robot then begins
 its program at the first command.
@@ -5187,7 +5187,7 @@ its program at the first command.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #COMMAND2.HLP
-:1st: 
+:1st:
 $~9Command Reference Part II
 
 >#COMMANDR.HLP:1st:Command Reference (Part I)
@@ -5270,7 +5270,7 @@ direction relative to the player.
 
 Jumps to a label if a given thing is at the given {x,y}
 coordinates or to the immediate given direction of the current
-Robot. The third form jumps if the thing is NOT in the 
+Robot. The third form jumps if the thing is NOT in the
 immediate given direction.
 
 >#COMMANDS.HLP:col:Colors
@@ -5392,7 +5392,7 @@ the current Robot.
 
 The movement of the origin changes the {0,0} coordinates from
 the upper left of the board to somewhere else, effectively
-adding that {x,y} position to any coordinates entered. For 
+adding that {x,y} position to any coordinates entered. For
 example, if the Robot is at the {5,5} position and uses REL
 SELF on the coordinates {2,2}, it will effectively act on
 coordinates {7,7}. If the player is at the {7,2} position and a
@@ -5451,7 +5451,7 @@ difference with these commands - REL COUNTERS FIRST works off
 of the counters FIRSTXPOS and FIRSTYPOS, and  REL COUNTERS LAST
 works off of the counters LASTXPOS and LASTYPOS.
 
-NOTE: Using REL COUNTERS on COPY commands, instead of its 
+NOTE: Using REL COUNTERS on COPY commands, instead of its
 first/last versions, will still force FIRSTXPOS/FIRSTYPOS and
 LASTXPOS/LASTYPOS to be used, instead of basing both coordinate
 pairs off of XPOS and YPOS.
@@ -5715,7 +5715,7 @@ the player moves. The screen will not scroll.
 
 :_c0:~ACHAR EDIT [char] # # # # # # # # # # # # # #
 
-Changes the appearance of the given character, using a 
+Changes the appearance of the given character, using a
 14-number code from the character editor. To insert these codes
 easily, use F5 in the Robot editor, select the desired
 character, and press ESC.
@@ -6058,7 +6058,7 @@ and Y size must be from 1 to 25.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #BULLETTY.HLP
-:1st: 
+:1st:
 $~9Bullet Types
 
 There are three different types of bullets in MegaZeux: Player,
@@ -6079,7 +6079,7 @@ or NEUTRALSHOT labels.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #CHANGECH.HLP
-:1st: 
+:1st:
 $~9CHANGE CHAR ID - The CHAR ID Table
 
 The CHAR ID table has many uses. The first area of usage - the
@@ -6357,7 +6357,7 @@ lines:
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #BUILTINL.HLP
-:1st: 
+:1st:
 $~9Built-in Labels
 
 Robotic has many built-in labels (messages) that are activated
@@ -6430,6 +6430,10 @@ in the Miscellaneous Counters section of the help file.
 ~EKEYENTER [#]
 
 This is sent when the player presses the Enter key.
+
+~EKEYESCAPE [#]
+
+This is sent when the player presses the Escape key.
 
 ~EINVINCO [#]
 
@@ -6523,7 +6527,7 @@ box, or when ESC exits an ASK box.
 >#SENSORSW.HLP:094:Sensors
 >#MAIN.HLP:072:Table of Contents
 #COUNTERS.HLP
-:1st: 
+:1st:
 $~9Counters, Built-in Counters and Local Counters
 
 Counters are built-in variables, or stored values with names.
@@ -7292,6 +7296,14 @@ Determines whether the built-in status window is loaded when
 the enter key is pressed. 1 (or any non-zero value) is yes, 0
 is no. The default is 1 (yes).
 
+~BQUIT_MENU
+
+Determines whether the built-in quit window is loaded when
+the escape key is pressed. 1 (or any non-zero value) is yes, 0
+is no. The default is 1 (yes). *CAUTION* If the quit menu is
+disabled the user must provide a quit mechanism via the MZX_QUIT
+counter.
+
 ~BHELP_MENU
 
 Determines whether the built-in help window is loaded when the
@@ -7368,6 +7380,12 @@ consistent. MZX_SPEED will revert back to the default value
 listed in the configuration file upon loading a different game.
 
 >#CONFGINI.HLP:1st:The Config File
+
+~BMZX_QUIT
+
+Settings this value to 1 or 2 will cause the program to quit.
+The value of 1 quits to the title screen, a value of 2 quits
+the application completely.
 
 ~BCURRENT_COLOR
 ~BRED_VALUE
@@ -7484,7 +7502,7 @@ LAST command.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #USINGTHE.HLP
-:1st: 
+:1st:
 $~9Using the Editor
 
 The Robotic editor is quite simple to use. After selecting your
@@ -7710,7 +7728,7 @@ Robot program.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #ROBOTSWH.HLP
-:1st: 
+:1st:
 $~9Robots - What They Are and How to Use Them
 
 Robots are the heart and soul of MegaZeux. Anything you could
@@ -7737,7 +7755,7 @@ the Robot in Robotic.
 >#MAIN.HLP:072:Table of Contents
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 #ROBOTICT.HLP
-:1st: 
+:1st:
 $~9Robotic Tutorial
 
 Robotic has a few concepts that you must understand before you
@@ -8101,7 +8119,7 @@ newer help file additions.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #THEGLOBL.HLP
-:gbl: 
+:gbl:
 $~9The Global
 
 The global Robot is a special-case Robot; it is always present
@@ -8141,7 +8159,7 @@ things.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #BADPRACT.HLP
-:101: 
+:101:
 $~9Robotic Usages That Should be Avoided
 
 There are several coding pitfalls in Robotic; while some are
@@ -8195,7 +8213,7 @@ are several practices to avoid, as well as proper replacements.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #SUBROUTE.HLP
-:sub: 
+:sub:
 $~9Subroutines
 
 Subroutines are returnable labels, in essence. After the
@@ -8261,7 +8279,7 @@ mentally treat them the same.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #EXPRESS.HLP
-:exp: 
+:exp:
 $~9Expressions
 
 Expressions in MegaZeux allow users to set counters or a
@@ -8409,7 +8427,7 @@ due to the way the world file format is coded. This is also the
 only way to use octal (base 8) and full-sized hexadecimal
 numbers; octal numbers always begin with a 0 (ex: 01745) and
 hex numbers begin with 0x (ex: 0xDEAF).
--The ~E#~F character returns the value of the last sub 
+-The ~E#~F character returns the value of the last sub
 expression. For example, if the previous expression was
 (2+(2*3)), then # would return 8. Keep in mind that expressions
 evaluate from left to right, so, for example, consecutive
@@ -8422,7 +8440,7 @@ YOUR OWN RISK.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #FILEACSS.HLP
-:fil: 
+:fil:
 $~9File Access
 
 MegaZeux allows somewhat unwieldy but powerful file access
@@ -8566,7 +8584,7 @@ by FWRITE_COUNTER and FREAD_COUNTER to read in longer values
 at a time (four bytes as opposed to one).
 
 Another use of file commands (which takes more work, but not
-much) is verifying whether a file exists. To do this, a 
+much) is verifying whether a file exists. To do this, a
 programmer would type:
 
 ~ESET "file.xxx" to "FREAD_OPEN"
@@ -8641,7 +8659,7 @@ chosen.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #SPRITES.HLP
-:spr: 
+:spr:
 $~9Sprites
 
 Sprites allow the designer to have interactive entities on the
@@ -8726,7 +8744,7 @@ of sprites.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #SMZXMODE.HLP
-:095: 
+:095:
 $~9Super MegaZeux Modes
 
 Super MZX modes (a.k.a. SMZX) allow richer color options at the
@@ -8809,7 +8827,7 @@ an SMZX palette (SET "filename" "smzx_palette").
 >#CHAREDIT.HLP:079:The Character Editor
 >#MAIN.HLP:072:Table of Contents
 #VLAYER.HLP
-:vla: 
+:vla:
 $~9The Vlayer and Its Uses
 
 The vlayer is an extra, global graphical layer, but it is never
@@ -8838,7 +8856,7 @@ given, the other becomes as large as possible to fill the given
 vlayer. For example, if one has a vlayer 50000 characters large
 and sets vlayer_height to 499, the vlayer's width will become
 100 characters wide (for a total vlayer size of 49900
-characters). 
+characters).
 
 All bad values of vlayer_size, vlayer_height and vlayer_width
 (0 and below) will be changed to 1.
@@ -8902,7 +8920,7 @@ this problem.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #MZM.HLP
-:mzm: 
+:mzm:
 $~9Using MZMs
 
 MZM files are equivalents of the ANSI files used in older MZX
@@ -8962,7 +8980,7 @@ of a board.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #TRIG.HLP
-:tri: 
+:tri:
 $~9Trigonometric Functions
 
 Trigonometry can simplify some complex engines, and MegaZeux
@@ -9021,7 +9039,7 @@ like "&sinlocal&" will not work, but "&sin('local')&" will.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #PARTIAL.HLP
-:par: 
+:par:
 $~9Partial Character Sets
 
 Partial character sets are smaller than full sets, as the name
@@ -9050,7 +9068,7 @@ replace in the target character set.
 >#ROBOTICR.HLP:087:Robotic Reference Manual
 >#MAIN.HLP:072:Table of Contents
 #NEWINVER.HLP
-:1st: 
+:1st:
 $~9NEW in MegaZeux!
 
 December 24, 2012 - MZX 2.84c
@@ -9183,7 +9201,7 @@ DEVELOPERS
   lookup speeds for large numbers of counters/strings, but will
   consume more memory. (Thanks to Lancer-X for the modified
   uthash header file.)
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 June 20, 2012 - MZX 2.84b
@@ -9387,13 +9405,14 @@ FEATURES
   first set of coordinates. (Lachesis)
 + Subroutine versions of TOUCH, BOMBED, INVINCO, PUSHED,
   PLAYERSHOT, NEUTRALSHOT, ENEMYSHOT, SHOT, PLAYERHIT, LAZER,
-  SPITFIRE, GOOPTOUCHED, PLAYERHURT, KEY[char], KEYENTER, THUD,
-  and EDGE have been added. These should ALWAYS be used in
-  conjunction with LOCKSELF/ZAP and #RETURN or #TOP to keep the
-  robot stack under control.  Please remember that THUD and
-  EDGE ignore LOCKSELF and their subroutine versions must be
-  ZAPped. JUSTENTERED, JUSTLOADED, and the sensor labels have
-  been excluded from this due to various reasons. (Lachesis)
+  SPITFIRE, GOOPTOUCHED, PLAYERHURT, KEY[char], KEYENTER,
+  KEYESCAPE, THUD, and EDGE have been added. These should
+  ALWAYS be used in conjunction with LOCKSELF/ZAP and #RETURN
+  or #TOP to keep the robot stack under control.  Please
+  remember that THUD and EDGE ignore LOCKSELF and their
+  subroutine versions must be ZAPped. JUSTENTERED, JUSTLOADED,
+  and the sensor labels have been excluded from this due to
+  various reasons. (Lachesis)
 
 BUGFIXES
 
@@ -9646,7 +9665,7 @@ USERS
   game, world or MZM could fail to overwrite any existing file
   by the same name (if matched case insensitively).
 + MZX no longer applies masking to chars 32-127 in signs or
-  scrolls when playing a world. Previously, even the 
+  scrolls when playing a world. Previously, even the
   mask_midchars option would have no effect on the display of
   signs or scrolls. This has been broken since 2.80g.
 + Re-worked board editor's Alt+H option to provide minimal
@@ -9752,7 +9771,7 @@ DEVELOPERS
 + Updated Wii port: improved audio and video support, added USB
   mouse support, numerous optimizations and improved file
   selector. (Mr_Alert)
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 December 29, 2008 - MZX 2.82b
@@ -9895,7 +9914,7 @@ USERS
 + On Windows, directx.bat now passes %cd% through to `start' so
   that features such as the updater continue to work.
   (MZXGiant)
-+ Pasting into a string with set "$str+N" with an N > 
++ Pasting into a string with set "$str+N" with an N >
   str.length will no longer crash MZX.
 + "Exit to DOS" is now "Exit MegaZeux" to reflect the
   multi-platform nature of the program.
@@ -9954,7 +9973,7 @@ DEVELOPERS
 - Removed HOST_CC feature for cross compilation; since the
   utilities now intimately depend on the MZX runtime, they must
   be built with the same compiler.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 June 10, 2008 - MZX 2.82
@@ -10039,7 +10058,7 @@ USERS
 + A robot that does a "put c?? Thing p?? [dir] player" and
   overwrites itself will no longer leak commands. Instead, if
   the robot overwrites itself, its program will end.
-+ Fixed message edges always showing up black, instead of 
++ Fixed message edges always showing up black, instead of
   whatever color 0 is. (Revvy)
 + Changed starting/max health and lives minimum to 1 instead of
   0. (Revvy)
@@ -10154,7 +10173,7 @@ DEVELOPERS
 + Builds no longer initialize the SDL audio subsystem if audio
   is permanently disabled with --disable-audio.
 + Added fixes for OpenBSD to allow PNG screenshots and X11
-  clipboard support to work. Tested with OpenBSD 4.2 and 
+  clipboard support to work. Tested with OpenBSD 4.2 and
   GCC 3.3.5.
 + Updated Win32 builds with SDL 1.2.13.
 + Build and package two utilities, txt2hlp (for helpfile
@@ -10345,7 +10364,7 @@ DEVELOPERS
 + MegaZeux's core now builds with -W (basically all GCC
   warnings) plus some additional warnings that aren't switched
   on by this flag. All warnings have been fixed.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 July 4, 2007 - MZX 2.81g
@@ -10517,7 +10536,7 @@ DEVELOPERS
   performance on platforms with weak FPUs.
 + Added GP2X port to config.sh, based on work done by Simon
   Parzer.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 January 30, 2007 - MZX 2.81f
@@ -10626,11 +10645,11 @@ DEVELOPERS
   chosen as the shell script interpreter. This should have been
   /bin/bash, as 'sh' is not required to support functions,
   which config.sh uses.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 January 19, 2007 - MZX 2.81e
- 
+
 + Made grabbing in the editor not combine background color
   - only uses "special" in game colors for player. tell me if
   anything ends up being weird because of this.
@@ -10769,15 +10788,15 @@ December 14, 2005 - MZX 2.81c
 + Fixed bug when using negative numbers for
   if sprite_colliding "counter".
 + Fixed math operations (inc, dec, etc) not working on string
-  indeces. 
+  indeces.
 + Added ability to force screen to 32bpp. Fixes some slight
   rendering issues, and if you have problems with fullscreen
   let me know if this helps (try it without first though). See
-  force_32bpp in config.txt. 
-+ Fixed sprite clipping bug with respect to overlay. 
+  force_32bpp in config.txt.
++ Fixed sprite clipping bug with respect to overlay.
 + Fixed bug where pressing enter on things besides robots,
   scrolls/signs, or sensors in the editor would clear whatever
-  was underneath it. 
+  was underneath it.
 + Accidentally broke SFX with optional PC speaker chains
   (played both, should only play PC speaker when digital music
   is off, fixes Bernard the Bard).
@@ -10862,7 +10881,7 @@ November 26, 2005 - MZX 2.81b
   string it's played at native frequency.
 + Accidentally made loading worlds in the editor not change the
   current directory, fixed that.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 November 20, 2005 - MZX 2.81
@@ -10961,7 +10980,7 @@ November 20, 2005 - MZX 2.81
 >#ANCENVER.HLP:103:New in Versions Through 1.03
 >#MAIN.HLP:072:Table of Contents
 #280CLOG.HLP
-:280: 
+:280:
 $~9New in Versions 2.80 to 2.80h
 
 June 6, 2005 - MZX 2.80h
@@ -11159,7 +11178,7 @@ April 1, 2005 - MZX 2.80g
   (fixes Weirdness chapter 1).
 - Removed the unimplemented if player dir and if not player dir
   commands from RASM.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 December 26, 2004 - MZX 2.80f
@@ -11277,7 +11296,7 @@ December 19, 2004 - MZX 2.80e
   for now.
 - MZX now ignores the mouse scroll wheel instead of
   interpreting it as a click.
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 October 9, 2004 - MZX 2.80d
@@ -11365,7 +11384,7 @@ October 9, 2004 - MZX 2.80d
   instead of malloc.
 - Removed ability to put robots, scrolls/signs, and sensors
   (with the put command in Robotic).
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 August 16, 2004 - MZX 2.80c
@@ -11505,7 +11524,7 @@ August 11, 2004 - MZX 2.80b
   converted GDM's have problems, delete the S3Ms it generated.
 - Removed export text in the board editor. Don't think anyone
   wanted it...
-  
+
 >#MAIN.HLP:072:Table of Contents
 
 August 9, 2004 - First release, MZX 2.80 BETA
@@ -11660,7 +11679,7 @@ August 9, 2004 - First release, MZX 2.80 BETA
 >#ANCENVER.HLP:103:New in Versions Through 1.03
 >#MAIN.HLP:072:Table of Contents
 #OLDERVER.HLP
-:099: 
+:099:
 $~9New in Versions 2.60 to 2.70
 
 **NEW in 2.70***
@@ -11814,7 +11833,7 @@ $***
 >#ANCENVER.HLP:103:New in Versions Through 1.03
 >#MAIN.HLP:072:Table of Contents
 #OLDESVER.HLP
-:100: 
+:100:
 $~9New in Versions 2.01 to 2.60
 
 ~E2.60 release:
@@ -12275,7 +12294,7 @@ before, you probably won't understand much of this list.
 >#ANCENVER.HLP:103:New in Versions Through 1.03
 >#MAIN.HLP:072:Table of Contents
 #NEWIN200.HLP
-:1st: 
+:1st:
 $~9New in Version 2.00:
 
  * All code has been rewritten or at least stepped through line
@@ -12513,7 +12532,7 @@ $~9New in Version 2.00:
 >#ANCENVER.HLP:103:New in Versions Through 1.03
 >#MAIN.HLP:072:Table of Contents
 #ANCENVER.HLP
-:103: 
+:103:
 $~9New in Versions Through 1.03
 
 1.03 release: QUICK FIXES, LIMITED DISTRIBUTION

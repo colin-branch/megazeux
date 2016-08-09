@@ -59,7 +59,7 @@ CORE_LIBSPEC extern void (*edit_world)(struct world *mzx_world,
  int reload_curr_file);
 CORE_LIBSPEC extern void (*debug_counters)(struct world *mzx_world);
 CORE_LIBSPEC extern void (*draw_debug_box)(struct world *mzx_world,
- int x, int y, int d_x, int d_y);
+ int x, int y, int d_x, int d_y, int ticks);
 
 CORE_LIBSPEC extern int (*debug_robot)(struct world *mzx_world,
  struct robot *cur_robot, int id);

@@ -115,7 +115,7 @@ __editor_maybe_static void (*edit_world)(struct world *mzx_world,
  int reload_curr_file);
 __editor_maybe_static void (*debug_counters)(struct world *mzx_world);
 __editor_maybe_static void (*draw_debug_box)(struct world *mzx_world,
- int x, int y, int d_x, int d_y);
+ int x, int y, int d_x, int d_y, int ticks);
 
 __editor_maybe_static void (*edit_breakpoints)(struct world *mzx_world);
 
@@ -132,7 +132,7 @@ static const char cw_offs[8] = { 10, 2, 6, 4, 5, 1, 9, 8 };
 static const char ccw_offs[8] = { 10, 8, 9, 1, 5, 4, 6, 2 };
 
 // Whether to update a palette from robot activity
-bool pal_update; 
+bool pal_update;
 
 __editor_maybe_static const char *const world_ext[] = { ".MZX", NULL };
 
@@ -1006,6 +1006,7 @@ __editor_maybe_static void draw_viewport(struct world *mzx_world)
 static int update(struct world *mzx_world, int game, int *fadein)
 {
   int start_ticks = get_ticks();
+  double start_time = get_time_accurate();
   int time_remaining;
   static int reload = 0;
   static int slowed = 0; // Flips between 0 and 1 during slow_time
@@ -1576,8 +1577,10 @@ static int update(struct world *mzx_world, int game, int *fadein)
     // Add debug box
     if(draw_debug_box && debug_mode)
     {
+      int debug_total_ticks = get_ticks() - start_ticks;
+      double debug_total_time = get_time_accurate() - start_time;
       draw_debug_box(mzx_world, 60, 19, mzx_world->player_x,
-       mzx_world->player_y);
+       mzx_world->player_y, get_ticks() - start_ticks);
     }
 
     // note-- pal_update was previously here
@@ -2238,18 +2241,27 @@ __editor_maybe_static void play_game(struct world *mzx_world)
 
         case IKEY_ESCAPE:
         {
-          // Quit
-          m_show();
+          int quit_menu_status = get_counter(mzx_world, "QUIT_MENU", 0);
+          send_robot_all_def(mzx_world, "KeyEscape");
 
-          if(confirm(mzx_world, "Quit playing- Are you sure?"))
+          if (mzx_world->version < 0x0255 || quit_menu_status)
+          {
+            // Quit
+            m_show();
+            if (confirm(mzx_world, "Quit playing- Are you sure?"))
+              key = 0;
+
+            update_event_status();
+          }
+          else
+          {
             key = 0;
-
-          update_event_status();
+          }
           break;
         }
       }
     }
-  } while(key != IKEY_ESCAPE);
+  } while(key != IKEY_ESCAPE && get_counter(mzx_world, "MZX_QUIT", 0) == 0);
 
   pop_context();
   vquick_fadeout();
@@ -2264,6 +2276,7 @@ void title_screen(struct world *mzx_world)
   struct stat file_info;
   struct board *src_board;
   char *current_dir;
+  int autoPlay = 0;
 
   debug_mode = false;
 
@@ -2287,14 +2300,25 @@ void title_screen(struct world *mzx_world)
   }
   else
   {
-    if(!stat(curr_file, &file_info))
+    if (!stat(curr_file, &file_info))
+    {
       load_world_file(mzx_world, curr_file);
+      if (mzx_world->version >= 0x0255) //Only enable with new versions
+      {
+        autoPlay = 1;
+        fadein = 0;
+      }
+    }
     else
       load_world_selection(mzx_world);
   }
 
   src_board = mzx_world->current_board;
-  draw_intro_mesg(mzx_world);
+
+  if (!autoPlay)
+  {
+    draw_intro_mesg(mzx_world);
+  }
 
   // Main game loop
 
@@ -2330,6 +2354,12 @@ void title_screen(struct world *mzx_world)
 
     // Keycheck
     key = get_key(keycode_internal);
+
+    if (autoPlay)
+    {
+      key = IKEY_p;
+      autoPlay = 0;
+    }
 
     if(key)
     {
@@ -2419,33 +2449,41 @@ void title_screen(struct world *mzx_world)
               update_event_status();
               play_game(mzx_world);
 
-              // Done playing- load world again
-              // Already faded out from play_game()
-              end_module();
-              // Clear screen
-              clear_screen(32, 7);
-              // Palette
-              default_palette();
-              insta_fadein();
-              // Reload original file
-              if(!stat(curr_file, &file_info))
+
+              if (get_counter(mzx_world, "MZX_QUIT", 0) == 2)
               {
-                if(reload_world(mzx_world, curr_file, &fade))
-                {
-                  src_board = mzx_world->current_board;
-                  load_board_module(src_board);
-                  strcpy(mzx_world->real_mod_playing,
-                   src_board->mod_playing);
-                  set_counter(mzx_world, "TIME",
-                   src_board->time_limit, 0);
-                }
+                key = IKEY_ESCAPE;
               }
               else
               {
-                clear_world(mzx_world);
+                // Done playing- load world again
+                // Already faded out from play_game()
+                end_module();
+                // Clear screen
+                clear_screen(32, 7);
+                // Palette
+                default_palette();
+                insta_fadein();
+                // Reload original file
+                if (!stat(curr_file, &file_info))
+                {
+                  if (reload_world(mzx_world, curr_file, &fade))
+                  {
+                    src_board = mzx_world->current_board;
+                    load_board_module(src_board);
+                    strcpy(mzx_world->real_mod_playing,
+                      src_board->mod_playing);
+                    set_counter(mzx_world, "TIME", src_board->time_limit, 0);
+                  }
+                }
+                else
+                {
+                  clear_world(mzx_world);
+                  clear_global_data(mzx_world);
+                }
+                vquick_fadeout();
+                fadein = 1;
               }
-              vquick_fadeout();
-              fadein = 1;
             }
             break;
           }
@@ -2522,31 +2560,40 @@ void title_screen(struct world *mzx_world)
               vquick_fadeout();
 
               play_game(mzx_world);
-              // Done playing- load world again
-              // Already faded out from play_game()
-              end_module();
-              // Clear screen
-              clear_screen(32, 7);
-              // Palette
-              default_palette();
-              insta_fadein();
-              // Reload original file
-              if(reload_world(mzx_world, curr_file, &fade))
+
+
+              if (get_counter(mzx_world, "MZX_QUIT", 0) == 2)
               {
-                src_board = mzx_world->current_board;
-                load_board_module(src_board);
-                strcpy(mzx_world->real_mod_playing,
-                 src_board->mod_playing);
-                set_counter(mzx_world, "TIME", src_board->time_limit, 0);
+                key = IKEY_ESCAPE;
               }
-              // Whoops, something happened! Make a blank world instead
               else
               {
-                clear_world(mzx_world);
-                clear_global_data(mzx_world);
+                // Done playing- load world again
+                // Already faded out from play_game()
+                end_module();
+                // Clear screen
+                clear_screen(32, 7);
+                // Palette
+                default_palette();
+                insta_fadein();
+                // Reload original file
+                if (reload_world(mzx_world, curr_file, &fade))
+                {
+                  src_board = mzx_world->current_board;
+                  load_board_module(src_board);
+                  strcpy(mzx_world->real_mod_playing,
+                    src_board->mod_playing);
+                  set_counter(mzx_world, "TIME", src_board->time_limit, 0);
+                }
+                // Whoops, something happened! Make a blank world instead
+                else
+                {
+                  clear_world(mzx_world);
+                  clear_global_data(mzx_world);
+                }
+                vquick_fadeout();
+                fadein = 1;
               }
-              vquick_fadeout();
-              fadein = 1;
             }
             else
             {
@@ -2620,7 +2667,7 @@ void title_screen(struct world *mzx_world)
           set_config_from_file(&(mzx_world->conf), "game.cnf");
           chdir(current_dir);
 
-          if(!reload_savegame(mzx_world, curr_sav, &fadein))
+          if (!reload_savegame(mzx_world, curr_sav, &fadein))
           {
             vquick_fadeout();
           }
@@ -2648,37 +2695,40 @@ void title_screen(struct world *mzx_world)
 
             play_game(mzx_world);
 
-            // Done playing- load world again
-            // Already faded out from play_game()
-            end_module();
-            // Clear screen
-            clear_screen(32, 7);
-            // Palette
-            default_palette();
-            insta_fadein();
-            // Reload original file
-            if(!stat(curr_file, &file_info))
+            if (get_counter(mzx_world, "MZX_QUIT", 0) == 2)
             {
-              if(reload_world(mzx_world, curr_file, &fade))
+              key = IKEY_ESCAPE;
+            }
+            else
+            {
+              // Done playing- load world again
+              // Already faded out from play_game()
+              end_module();
+              // Clear screen
+              clear_screen(32, 7);
+              // Palette
+              default_palette();
+              insta_fadein();
+              // Reload original file
+              if (!stat(curr_file, &file_info) && reload_world(mzx_world, curr_file, &fade))
               {
                 src_board = mzx_world->current_board;
                 load_board_module(src_board);
                 strcpy(mzx_world->real_mod_playing,
-                 src_board->mod_playing);
-                set_counter(mzx_world, "TIME",
-                 src_board->time_limit, 0);
+                  src_board->mod_playing);
+                set_counter(mzx_world, "TIME", src_board->time_limit, 0);
               }
+              else
+              {
+                clear_world(mzx_world);
+                clear_global_data(mzx_world);
+              }
+              vquick_fadeout();
+              fadein = 1;
+              update_screen();
+              update_event_status();
             }
-            else
-            {
-              clear_world(mzx_world);
-            }
-            vquick_fadeout();
-            fadein = 1;
           }
-
-          update_screen();
-          update_event_status();
 
           break;
         }
@@ -2717,14 +2767,14 @@ void title_screen(struct world *mzx_world)
 
         case IKEY_ESCAPE:
         {
-          // Quit
-          m_show();
+            // Quit
+            m_show();
 
-          if(confirm(mzx_world, "Exit MegaZeux - Are you sure?"))
-            key = 0;
+            if (confirm(mzx_world, "Exit MegaZeux - Are you sure?"))
+              key = 0;
 
-          update_screen();
-          update_event_status();
+            update_screen();
+            update_event_status();
           break;
         }
       }

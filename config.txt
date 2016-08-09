@@ -220,7 +220,7 @@
 
 # Name of world file that should be loaded when MZX starts.
 
-# startup_file = caverns.mzx
+# startup_file = quit_test.mzx
 
 # Default save file name given when you first try to save.
 

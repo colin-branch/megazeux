@@ -1399,6 +1399,91 @@ static void upr_write(struct world *mzx_world,
     board->level_under_param[offset] = value;
 }
 
+static int ech_read(struct world *mzx_world,
+  const struct function_counter *counter, const char *name, int id)
+{
+  struct board *board = mzx_world->current_board;
+  unsigned int x = 0, y = 0, offset = 0;
+  unsigned int board_width = board->board_width;
+  unsigned int board_height = board->board_height;
+  int effective_char = 32;
+  int top_sprite = -1;
+  int sprite_x, sprite_y;
+  int screen_x, screen_y;
+
+  translate_coordinates(name + 3, &x, &y);
+
+  if ((x >= board_width) || (y >= board_height))
+    return -1;
+
+  //Calculate once for all sprites
+  calculate_xytop(mzx_world, &screen_x, &screen_y);
+
+  top_sprite = top_sprite_at_xy(mzx_world, x, y, SPRITE_INITIALIZED | SPRITE_OVER_OVERLAY, screen_x, screen_y);
+
+  if (top_sprite != -1)
+  {
+    struct sprite* cur_sprite = mzx_world->sprite_list[top_sprite];
+
+    sprite_x = x - cur_sprite->x;
+    sprite_y = y - cur_sprite->y;
+
+    if (cur_sprite->flags & SPRITE_STATIC)
+    {
+      sprite_x -= screen_x;
+      sprite_y -= screen_y;
+    }
+
+    effective_char = sprite_char_at_xy(mzx_world, cur_sprite, sprite_x , sprite_y );
+    if (effective_char != -1)
+      return effective_char;
+  }
+
+  offset = x + (y * board_width);
+
+  if (board->overlay_mode > 0)
+  {
+    effective_char = board->overlay[offset];
+  }
+
+  if (effective_char != 32)
+  {
+    return effective_char;
+  }
+
+  return get_id_char(board, offset);
+}
+
+static int eco_read(struct world *mzx_world,
+  const struct function_counter *counter, const char *name, int id)
+{
+  struct board *board = mzx_world->current_board;
+  unsigned int x = 0, y = 0, offset = 0;
+  unsigned int board_width = board->board_width;
+  unsigned int board_height = board->board_height;
+  int effective_char = 32;
+
+  translate_coordinates(name + 3, &x, &y);
+
+  if ((x >= board_width) || (y >= board_height))
+    return -1;
+
+  offset = x + (y * board_width);
+
+  if (board->overlay_mode > 0)
+  {
+    effective_char = board->overlay_color[offset];
+  }
+
+  if (effective_char != 32)
+  {
+    return effective_char;
+  }
+
+  return get_id_color(board, offset);
+}
+
+
 /***** END THE STUPID BOARD ACCESS COUNTERS *****/
 
 static int char_byte_read(struct world *mzx_world,
@@ -2456,6 +2541,8 @@ static const struct function_counter builtin_counters[] =
   { "date_month", 0x0209, date_month_read, NULL },                   // 2.60
   { "date_year", 0x0209, date_year_read, NULL },                     // 2.60
   { "divider", 0x0244, divider_read, divider_write },                // 2.68
+  { "ech!,!", 0x0255, ech_read, NULL },                              // 2.85
+  { "eco!,!", 0x0255, eco_read, NULL },                              // 2.85
   { "fread", 0x0209, fread_read, NULL },                             // 2.60
   { "fread_counter", 0x0241, fread_counter_read, NULL },             // 2.65
   { "fread_delimiter", 0x0254, NULL, fread_delim_write },            // 2.84
@@ -2596,7 +2683,7 @@ int set_counter_special(struct world *mzx_world, char *char_value,
 
   if(strlen(char_value) >= MAX_PATH)
     return 0; // haha nope
-  
+
   switch(mzx_world->special_counter_return)
   {
     case FOPEN_FREAD:
@@ -2631,7 +2718,7 @@ int set_counter_special(struct world *mzx_world, char *char_value,
           mzx_world->input_file = fopen_unsafe(translated_path, "rb");
 
         if(mzx_world->input_file || mzx_world->input_is_dir)
-          strcpy(mzx_world->input_file_name, translated_path);    
+          strcpy(mzx_world->input_file_name, translated_path);
 
         free(translated_path);
       }

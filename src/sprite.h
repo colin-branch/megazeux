@@ -58,6 +58,9 @@ void draw_sprites(struct world *mzx_world);
 int sprite_at_xy(struct sprite *cur_sprite, int x, int y);
 int sprite_colliding_xy(struct world *mzx_world, struct sprite *check_sprite,
  int x, int y);
+int top_sprite_at_xy(struct world *mzx_world, int x, int y, char flags, int screen_x, int screen_y);
+int sprite_char_at_xy(struct world *mzx_world, struct sprite *cur_sprite,
+ int local_x, int local_y);
 
 __M_END_DECLS
 

@@ -130,6 +130,9 @@ void draw_sprites(struct world *mzx_world)
     qsort(draw_order, i2, sizeof(struct sprite *), compare_spr);
   }
 
+  //Calculate once for all sprites
+  calculate_xytop(mzx_world, &screen_x, &screen_y);
+
   // draw this on top of the SCREEN window.
   for(i = 0; i < MAX_SPRITES; i++)
   {
@@ -140,7 +143,6 @@ void draw_sprites(struct world *mzx_world)
 
     if(cur_sprite->flags & SPRITE_INITIALIZED)
     {
-      calculate_xytop(mzx_world, &screen_x, &screen_y);
       ref_x = cur_sprite->ref_x;
       ref_y = cur_sprite->ref_y;
       offset_x = 0;
@@ -717,4 +719,126 @@ int sprite_colliding_xy(struct world *mzx_world, struct sprite *check_sprite,
 
   mzx_world->collision_count = colliding;
   return colliding;
+}
+
+int internal_any_sprite_at_xy(struct sprite *cur_sprite, int x, int y, int screen_x, int screen_y)
+{
+  int sprite_x = cur_sprite->x;
+  int sprite_y = cur_sprite->y;
+  if (cur_sprite->flags & SPRITE_STATIC)
+  {
+    sprite_x += screen_x;
+    sprite_y += screen_y;
+    if ((x >= sprite_x) && (x < sprite_x + cur_sprite->width) &&
+      (y >= sprite_y) && (y < sprite_y + cur_sprite->height))
+    {
+      return 1;
+    }
+  }
+  else
+  {
+    if ((x >= sprite_x) && (x < sprite_x + cur_sprite->width) &&
+      (y >= sprite_y) && (y < sprite_y + cur_sprite->height))
+    {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+int top_sprite_at_xy(struct world *mzx_world, int x, int y, char flags, int screen_x, int screen_y)
+{
+  int i;
+  struct sprite** sprite_list = mzx_world->sprite_list;
+
+  for (i = MAX_SPRITES -1; i >= 0; i--)
+  {
+    if ((sprite_list[i]->flags & flags) &&
+      internal_any_sprite_at_xy(sprite_list[i], x, y, screen_x, screen_y))
+      break;
+  }
+  return i;
+}
+
+
+int sprite_char_at_xy(struct world *mzx_world, struct sprite *cur_sprite, int local_x, int local_y)
+{
+  struct board *src_board = mzx_world->current_board;
+  int ref_x = cur_sprite->ref_x;
+  int ref_y = cur_sprite->ref_y;
+  int viewport_x = src_board->viewport_x;
+  int viewport_y = src_board->viewport_y;
+  int offset_x = 0;
+  int offset_y = 0;
+  int board_width = src_board->board_width;
+  char *src_chars, *src_colors;
+  int bwidth;
+  bool use_vlayer;
+  int i4, i6;
+  char ch;
+  int overlay_mode = src_board->overlay_mode;
+
+  if (local_x < 0 || local_x >= cur_sprite->width)
+    return -1;
+
+  if (local_y < 0 || local_y >= cur_sprite->height)
+    return -1;
+
+  if (cur_sprite->flags & SPRITE_VLAYER)
+  {
+    use_vlayer = true;
+    bwidth = mzx_world->vlayer_width;
+    src_chars = mzx_world->vlayer_chars;
+    src_colors = mzx_world->vlayer_colors;
+  }
+  else
+  {
+    use_vlayer = false;
+    bwidth = board_width;
+    src_chars = src_board->level_param;
+    src_colors = src_board->level_color;
+  }
+
+  i4 = ((ref_y + local_y) * bwidth) + ref_x + local_x;
+
+  if (overlay_mode == 2)
+  {
+    i6 = ((cur_sprite->y + local_y) * board_width) + cur_sprite->x + local_x;
+  }
+  else
+  {
+    i6 = ((cur_sprite->y + local_y + offset_y) * board_width) +
+      cur_sprite->x + local_x + offset_x;
+  }
+
+  if (use_vlayer)
+    ch = src_chars[i4];
+  else
+    ch = get_id_char(src_board, i4);
+
+  switch ((cur_sprite->flags & 0x04) >> 2)
+  {
+    // over overlay
+    case 1:
+    {
+      if (ch != 32)
+      {
+        if (!(cur_sprite->flags & SPRITE_CHAR_CHECK2) || !is_blank(ch))
+          return ch;
+      }
+      break;
+    }
+    // under overlay
+    case 0:
+    {
+      if ((!overlay_mode || overlay_mode == 3 ||
+        (src_board->overlay[i6] == 32)) && ch != 32)
+      {
+        if (!(cur_sprite->flags & SPRITE_CHAR_CHECK2) || !is_blank(ch))
+          return ch;
+      }
+      break;
+    }
+  }
+  return -1;
 }
