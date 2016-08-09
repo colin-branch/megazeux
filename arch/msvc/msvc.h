@@ -27,15 +27,19 @@
 #include <direct.h>
 #include <process.h>
 
+#pragma warning(disable: 4996)
+
 #define S_ISREG(mode) (mode & _S_IFREG)
 #define S_ISDIR(mode) (mode & _S_IFDIR)
 
+/*
 #define chdir       _chdir
 #define execv       _execv
 #define getcwd      _getcwd
 #define rmdir       _rmdir
 #define snprintf    _snprintf
 #define unlink      _unlink
+*/
 
 #ifndef strcasecmp
 #define strcasecmp  _stricmp

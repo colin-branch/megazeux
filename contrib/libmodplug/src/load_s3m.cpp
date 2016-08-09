@@ -135,7 +135,7 @@ void CSoundFile::S3MSaveConvert(UINT *pcmd, UINT *pprm, BOOL bIT) const
 	case CMD_FINEVIBRATO:		command = 'U'; break;
 	case CMD_GLOBALVOLUME:		command = 'V'; break;
 	case CMD_GLOBALVOLSLIDE:	command = 'W'; break;
-	case CMD_PANNING8:			
+	case CMD_PANNING8:
 		command = 'X';
 		if ((bIT) && (m_nType != MOD_TYPE_IT) && (m_nType != MOD_TYPE_XM))
 		{
@@ -304,7 +304,7 @@ BOOL CSoundFile::ReadS3M(const BYTE *lpStream, DWORD dwMemLength)
 			Ins[iSmp].nLength = boundInput(bswapLE32(pSmp.length), 4, MAX_SAMPLE_LENGTH);
 			Ins[iSmp].nLoopStart = boundInput(bswapLE32(pSmp.loopbegin), 4, Ins[iSmp].nLength - 1);
 			Ins[iSmp].nLoopEnd = boundInput(bswapLE32(pSmp.loopend), 4, Ins[iSmp].nLength);
-			Ins[iSmp].nVolume = boundInput(pSmp.vol, 0, 64) << 2;
+			Ins[iSmp].nVolume = (WORD)boundInput(pSmp.vol, 0, 64) << 2;
 			Ins[iSmp].nGlobalVol = 64;
 			if (pSmp.flags&1) Ins[iSmp].uFlags |= CHN_LOOP;
 			UINT j = bswapLE32(pSmp.finetune);

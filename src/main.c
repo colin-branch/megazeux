@@ -65,6 +65,16 @@
 #define __libspec
 #endif
 
+ 
+FILE* __iob_func()
+{
+   static FILE buffer[3];
+   buffer[0] = *stdin;
+   buffer[1] = *stdout;
+   buffer[2] = *stderr;
+   return buffer;
+}
+
 __libspec int main(int argc, char *argv[])
 {
   int err = 1;

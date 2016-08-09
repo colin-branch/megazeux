@@ -35,6 +35,15 @@
 #include "const.h" // for MAX_PATH
 #include "error.h"
 
+FILE* __iob_func()
+{
+   static FILE buffer[3];
+   buffer[0] = *stdin;
+   buffer[1] = *stdout;
+   buffer[2] = *stderr;
+   return buffer;
+}
+
 struct mzx_resource
 {
   const char *const base_name;
